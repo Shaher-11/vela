@@ -2,15 +2,13 @@
 
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
-  before_action :authenticate_user!, :except => [:index]
+  before_action :authenticate_user!, except: [:index]
 
   def index
     @products = Product.all
   end
 
-
   def show; end
-
 
   def new
     @product = Product.new
@@ -18,7 +16,6 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit; end
-
 
   def create
     @product = Product.new(product_params)
@@ -34,7 +31,6 @@ class ProductsController < ApplicationController
     end
   end
 
-
   def update
     respond_to do |format|
       if @product.update(product_params)
@@ -47,7 +43,6 @@ class ProductsController < ApplicationController
     end
   end
 
-
   def destroy
     @product.destroy
 
@@ -59,11 +54,9 @@ class ProductsController < ApplicationController
 
   private
 
-
   def set_product
     @product = Product.find(params[:id])
   end
-
 
   def product_params
     params.require(:product).permit(:title, :short_description, :description, :original_price, :final_price, :avatar)
