@@ -16,8 +16,8 @@
 #
 class Product < ApplicationRecord
   validates :title, presence: true
-  validates :short_description , presence: true
-  validates :description , presence: true
-  validates :original_price , presence: true
-  validates :final_price , presence: true
-end 
+  validates :short_description, presence: true
+  validates :description, presence: true
+  validates :original_price, presence: true
+  validates :final_price, presence: true
+end
