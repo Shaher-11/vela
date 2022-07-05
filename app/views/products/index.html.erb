@@ -6,7 +6,11 @@
 <tfoot>
 <tr>
 <td colspan="3">
+<% if current_user %>
+<% if current_user.admin %>
 <%= link_to 'New Product', new_product_path %>
+<% end %>
+<% end %>
 </td>
 </tr>
 </tfoot>
@@ -26,6 +30,8 @@ length: 80) %>
 <td class="actions">
 <ul>
 <li><%= link_to 'Show', product %></li>
+<% if current_user %>
+<% if current_user.admin %>
 <li><%= link_to 'Edit', edit_product_path(product) %></li>
 <li>
 <%= link_to 'Destroy',
@@ -33,9 +39,11 @@ product,
 method: :delete,
 data: { confirm: 'Are you sure?' } %>
 </li>
+<% end %>
 </ul>
 </td>
 </tr>
+<% end %>
 <% end %>
 </tbody>
 </table>
