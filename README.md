@@ -1,6 +1,6 @@
-![](https://img.shields.io/badge/trustyou-blueviolet)
+![](https://img.shields.io/badge/Vela-blueviolet)
 
-# Trustyou
+# Vela
 
 > Vela is a Product listing application built to  allow users view various  products added by the admin or admins of the application with the description and price etc, and users will check out those products and get to know more.
 > 
