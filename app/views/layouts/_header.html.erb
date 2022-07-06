@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="logo">
+  
+<%= link_to  image_tag("udzilla.png"), root_path, class: 'navbar-brand bckgrd' %> 
+  </div>
+  <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="d-flex bd-highlight">
+  <div class="p-5 flex-fill bd-highlight text-white">
+  <% if current_user %>
+  <% if current_user.admin %>
+   <h3> <%= link_to "New Product", new_product_path, class: "text-white btn btn-success" %></h3>
+   <% end %>
+    <% end %>
+  </div>
+  <div class="p-5 flex-fill bd-highlight text-white">
+  <% if user_signed_in? %>
+   <h2> <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-warning text-white" %></h2>
+  <% end %>
+  </div>
+  <div class="p-5 flex-fill bd-highlight text-white">
+  <% if user_signed_in? %>
+  <h2> <%= button_to "Sign Out", destroy_user_session_path, method: :delete,  class: "btn btn-danger text-white" %></h2>
+  <% end %>
+  </div>
+</div>
+  </div>
+</nav>
