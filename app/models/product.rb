@@ -20,4 +20,5 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validates :original_price, presence: true
   validates :final_price, presence: true
+  has_rich_text :description
 end
