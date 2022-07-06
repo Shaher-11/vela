@@ -1,3 +1,4 @@
+<div class="container">
 <%= form_with(model: product) do |form| %>
   <% if product.errors.any? %>
     <div style="color: red">
@@ -10,38 +11,34 @@
       </ul>
     </div>
   <% end %>
-
+<div class="form-group">
   <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "form-control",  placeholder: "Product Name" %>
   </div>
 
   <div>
-    <%= form.label :short_description, style: "display: block" %>
-    <%= form.text_field :short_description %>
-  </div>
+    <%= form.text_field :short_description,  class: "form-control",  placeholder: "Product Information" %>
+  </div><br>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.rich_text_area :description %>
-  </div>
+    <%= form.rich_text_area :description,  placeholder: "Product Full Description" %>
+  </div><br>
 
   <div>
-    <%= form.label :original_price, style: "display: block" %>
-    <%= form.text_field :original_price %>
-  </div>
+    <%= form.number_field :original_price,  class: "form-control",  placeholder: "Original Price" %>
+  </div><br>
 
   <div>
-    <%= form.label :final_price, style: "display: block" %>
-    <%= form.text_field :final_price %>
-  </div>
+    <%= form.number_field :final_price,  class: "form-control",  placeholder: "Final Price" %>
+  </div><br>
 
   <div>
-    <%= form.label :avatar, style: "display: block" %>
-    <%= form.text_area :avatar %>
-  </div>
+    <%= form.text_area :avatar,  class: "form-control", placeholder: "Add Product Image link" %>
+  </div><br>
 
-  <div>
-    <%= form.submit %>
+  <div class="text-center">
+    <%= form.submit class: "btn btn-large btn-success" %>
   </div>
 <% end %>
+</div>
+</div>
