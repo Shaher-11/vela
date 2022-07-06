@@ -5,8 +5,6 @@
 > Vela is a Product listing application built to  allow users view various  products added by the admin or admins of the application with the description and price etc, and users will check out those products and get to know more.
 > 
 
-admin@vela.com
-
 
 ## Built With
 
