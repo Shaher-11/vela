@@ -1,32 +1,44 @@
 <div id="<%= dom_id product %>">
-  <p>
-    <strong>Title:</strong>
-    <%= product.title %>
-  </p>
-
-  <p>
-    <strong>Short description:</strong>
-    <%= product.short_description %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= product.description %>
-  </p>
-
-  <p>
-    <strong>Original price:</strong>
-    <%= product.original_price %>
-  </p>
-
-  <p>
-    <strong>Final price:</strong>
-    <%= product.final_price %>
-  </p>
-
-  <p>
-    <strong>Avatar:</strong>
-    <%= product.avatar %>
-  </p>
+  <div class="conatiner text-center">
+  <div class="card">
+  <div class="card-header headery h4">
+    <div class="fas fa-graduation-cap"></div>
+    <h1><%= link_to product.title, product_path(product)%></h1>
+    Added <%= product.created_at.strftime('%d-%b-%Y') %> by 
+    <% user = User.find(product.user_id) %>
+    <%= user.user_name %>
+    <% if current_user %>
+    <% if current_user.admin %>
+    <%= link_to 'Edit Product', edit_product_path(product), class: "btn btn btn-warning text-white" %>
+    <%= button_to "Delete Product", product, method: :delete, class: "btn btn btn-danger text-white" %>
+    <% end %>
+    <% end %>
+    <br/>
+  </div>
+    <div class="card-img-top">
+      <%= image_tag product.avatar %>
+    </div>
+  <div class="card-body desy">
+    <p></p>
+    <small>
+      <%= simple_format(product.short_description) %>
+    </small>
+  </div>
+  <div class="card-body desy">
+    <p></p>
+    <small>
+      <%= product.description %>
+    </small>
+  </div>
+  <div class="card-footer footy"></div>
+  <div class="row text-center h5">
+    <div class="col-4">
+      <div class="fas fa-signal"></div>
+        Original Price <%= number_to_currency product.original_price %> <span class="text-danger">Final Price <%= number_to_currency product.final_price %></span>
+    </div>
+  </div>
+  
+</div>
+  </div>
 
 </div>

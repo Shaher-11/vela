@@ -11,13 +11,6 @@
     Added <%= product.created_at.strftime('%d-%b-%Y') %> by 
     <% user = User.find(product.user_id) %>
     <%= user.user_name %>
-    <% if current_user %>
-    <% if current_user.admin %>
-    <%= link_to 'Edit Product', edit_product_path(product), class: "btn btn btn-warning text-white" %>
-    <%= button_to "Delete Product", product, method: :delete, class: "btn btn btn-danger text-white" %>
-    <% end %>
-    <% end %>
-    <br/>
   </div>
     <div class="card-img-top">
       <%= image_tag product.avatar %>
