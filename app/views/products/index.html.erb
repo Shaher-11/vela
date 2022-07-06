@@ -1,53 +1,45 @@
+
+<div class="container text-center mb-5">
 <% if notice %>
 <aside id="notice"><%= notice %></aside>
 <% end %>
-<h1>Products</h1>
-<table>
-<tfoot>
-<tr>
-<td colspan="3">
-<% if current_user %>
-<% if current_user.admin %>
-<%= link_to 'New Product', new_product_path %>
-<% end %>
-<% end %>
-</td>
-</tr>
-</tfoot>
-<tbody>
+<div class="card">
 <% @products.each do |product| %>
-<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-<td class="image">
-<%= image_tag(product.avatar, class: 'list_image') %>
-</td>
-<td class="description">
-<h1><%= product.title %></h1>
-<p>
-<%= truncate(strip_tags(product.description),
-length: 80) %>
-</p>
-</td>
-<td class="actions">
-<ul>
-<li><%= link_to 'Show', product %></li>
-<% if current_user %>
-<% if current_user.admin %>
-<li><%= link_to 'Edit', edit_product_path(product) %></li>
-<li>
-<%= link_to 'Destroy',
-product,
-method: :delete,
-data: { confirm: 'Are you sure?' } %>
-</li>
-<% end %>
-</ul>
-</td>
-</tr>
-<% end %>
-<% end %>
-</tbody>
-</table>
-
-<% if current_user %>
-  <%= button_to "Log out", destroy_user_session_path, method: :delete, data: {turbo: :false} %>
-<% end %>
+  <div class="card-header headery h4">
+    <div class="fas fa-graduation-cap"></div>
+    <h1><%= link_to product.title, product_path(product)%></h1>
+    Added <%= product.created_at.strftime('%d-%b-%Y') %> by 
+    <% user = User.find(product.user_id) %>
+    <%= user.user_name %>
+    <% if current_user %>
+    <% if current_user.admin %>
+    <%= link_to 'Edit Product', edit_product_path(product), class: "btn btn btn-warning text-white" %>
+    <%= button_to "Delete Product", product, method: :delete, class: "btn btn btn-danger text-white" %>
+    <% end %>
+    <% end %>
+    <br/>
+  </div>
+    <div class="card-img-top">
+      <%= image_tag product.avatar %>
+    </div>
+  <div class="card-body desy">
+    <p></p>
+    <small>
+      <%= simple_format(product.short_description) %>
+    </small>
+  </div>
+  <div class="card-body desy">
+    <p></p>
+    <small>
+      <%= product.description %>
+    </small>
+  </div>
+  <div class="card-footer footy"></div>
+  <div class="row text-center h5">
+    <div class="col-4">
+      <div class="fas fa-signal"></div>
+        Original Price <%= number_to_currency product.original_price %> <span class="text-danger">Final Price <%= number_to_currency product.final_price %></span>
+    </div>
+  </div>
+  <% end %>
+</div>
