@@ -19,7 +19,7 @@
 
 [Vela Live Demo](https://vellaa.herokuapp.com/)
 
-#Log in as an Admin to create products
+# Log in as an Admin to create products
 Email: admin@vela.com
 Password: admin123
 
